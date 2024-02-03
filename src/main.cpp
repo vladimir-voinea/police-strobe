@@ -1,5 +1,8 @@
 #include "police_lights.hpp"
-#include "push_button.hpp"
+#include <push_button.hpp>
+#include <time.hpp>
+#include <sleep.hpp>
+#include <memory>
 #include <Arduino.h>
 
 enum class strobe_mode
@@ -19,17 +22,18 @@ void print_cycles(int cycles) {
 
 void loop() {
   static int cycles = 0;
-  static police_lights lights;
-  static push_button button{8};
+  static auto lights = vl::make_unique<police_lights>();
+  static ardent::push_button button{8};
   
   if(lights_state == strobe_mode::on) {
-    lights.loop();
+    lights->loop();
   }
 
   if(button.is_pressed()) {
     lights_state = lights_state == strobe_mode::on ? strobe_mode::off : strobe_mode::on;
-    lights.reset();
-    delay(500);
+    lights->reset();
+
+    ardent::sleep(vl::milliseconds{500});    
   }
 
   cycles++;

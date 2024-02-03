@@ -18,6 +18,7 @@ enum class police_lights_state : char
 
 class police_lights
 {
+  using led = ardent::led;
 public:
   police_lights();
   void loop();
@@ -33,6 +34,6 @@ private:
   int m_cycles_for_state = 0;
   int m_iterations = 0;
   police_lights_state m_state = police_lights_state::red;
-  tuple<led, led, led> m_red;
-  tuple<led, led, led> m_blue;
+  vl::tuple<led, led, led> m_red;
+  vl::tuple<led, led, led> m_blue;
 };
