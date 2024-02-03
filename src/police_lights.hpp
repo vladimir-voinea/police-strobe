@@ -34,6 +34,6 @@ private:
   int m_cycles_for_state = 0;
   int m_iterations = 0;
   police_lights_state m_state = police_lights_state::red;
-  vl::tuple<led, led, led> m_red;
-  vl::tuple<led, led, led> m_blue;
+  std::tuple<led, led, led> m_red;
+  std::tuple<led, led, led> m_blue;
 };
