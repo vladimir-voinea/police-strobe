@@ -1,7 +1,7 @@
 #pragma once
 
 #include "led.hpp"
-#include "tuple.hpp"
+#include <tuple>
 #include <stddef.h>
 
 enum class police_lights_state : char
@@ -21,6 +21,7 @@ class police_lights
 public:
   police_lights();
   void loop();
+  void reset();
 
 private:
   int get_sleep_duration_ms();

@@ -1,0 +1,3 @@
+[submodule "lib/ardent"]
+	path = lib/ardent
+	url = https://github.com/vladimir-voinea/ardent.git

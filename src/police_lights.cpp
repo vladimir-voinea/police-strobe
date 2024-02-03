@@ -32,6 +32,14 @@ police_lights::police_lights()
 {
 }
 
+void police_lights::reset()
+{
+    m_cycles = 0;
+    m_cycles_for_state = 0;
+    m_iterations = 0;
+    m_state = police_lights_state::red;
+}
+
 void police_lights::transition_if_needed()
 {
     if(!m_cycles)
@@ -49,10 +57,10 @@ void police_lights::transition_if_needed()
             m_iterations++;
         }
 
-        Serial.print("State changes: ");
-        Serial.println(state_changes);
-        Serial.print("Iterations: ");
-        Serial.println(m_iterations);
+        // Serial.print("State changes: ");
+        // Serial.println(state_changes);
+        // Serial.print("Iterations: ");
+        // Serial.println(m_iterations);
     }; 
 
     switch(m_state)
