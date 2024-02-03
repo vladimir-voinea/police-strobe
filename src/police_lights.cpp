@@ -28,7 +28,7 @@ namespace
 }
 
 police_lights::police_lights()
-    : m_red({2}, {3}, {4}), m_blue({10}, {11}, {12})
+    : m_red({2}, {3}, {4}), m_blue({5}, {6}, {7})
 {
 }
 
