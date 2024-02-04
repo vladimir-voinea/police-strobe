@@ -33,7 +33,7 @@ void loop() {
     lights_state = lights_state == strobe_mode::on ? strobe_mode::off : strobe_mode::on;
     lights->reset();
 
-    ardent::sleep(estd::milliseconds{500});    
+    ardent::sleep(estd::milliseconds{500});
   }
 
   cycles++;

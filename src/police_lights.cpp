@@ -130,9 +130,9 @@ void blink_all(int duration_ms, T& leds)
         led.turn_off();
     };
     
-    apply_to_each(turn_on, leds);
+    estd::apply_to_each(turn_on, leds);
     delay(duration_ms);
-    apply_to_each(turn_off, leds);
+    estd::apply_to_each(turn_off, leds);
     delay(duration_ms);
 }
 
@@ -152,16 +152,16 @@ void police_lights::loop()
     switch(m_state)
     {
         case police_lights_state::red:
-            apply_to_each(turn_off, m_blue);
-            apply_to_each(blink{get_sleep_duration_ms()}, m_red);
+            estd::apply_to_each(turn_off, m_blue);
+            estd::apply_to_each(blink{get_sleep_duration_ms()}, m_red);
             break;
         case police_lights_state::blue:
-            apply_to_each(turn_off, m_red);
-            apply_to_each(blink{get_sleep_duration_ms()}, m_blue);
+            estd::apply_to_each(turn_off, m_red);
+            estd::apply_to_each(blink{get_sleep_duration_ms()}, m_blue);
             break;
         case police_lights_state::sequence:
-            apply_to_each(blink{static_cast<int>(get_sleep_duration_ms() / 1.25f)}, m_red);
-            apply_to_each(blink{static_cast<int>(get_sleep_duration_ms() / 1.25f)}, m_blue);
+            estd::apply_to_each(blink{static_cast<int>(get_sleep_duration_ms() / 1.25f)}, m_red);
+            estd::apply_to_each(blink{static_cast<int>(get_sleep_duration_ms() / 1.25f)}, m_blue);
             break;
         case police_lights_state::all_on:
         {
@@ -180,8 +180,8 @@ void police_lights::loop()
         case police_lights_state::off_1:
         case police_lights_state::off_2:
         case police_lights_state::off_3:
-            apply_to_each(turn_off, m_red);
-            apply_to_each(turn_off, m_blue);
+            estd::apply_to_each(turn_off, m_red);
+            estd::apply_to_each(turn_off, m_blue);
             sleep(get_sleep_duration_ms());
             break;
         default:
